@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+  
+before-install:
+  - docker build -t tonymall/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true tonymall/docker-react npm run test
